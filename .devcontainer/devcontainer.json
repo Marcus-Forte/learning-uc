@@ -1,0 +1,15 @@
+{
+    "name": "STM32 Dev Container",
+    "build":
+    {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack",
+                "llvm-vs-code-extensions.vscode-clangd"
+            ]
+        }
+    }
+}
