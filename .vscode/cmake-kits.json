@@ -1,6 +1,6 @@
 [
     {
         "name": "arm-none-eabi",
-        "toolchainFile": "/workspaces/learning-stm32f103/cmake/arm-toolchain.cmake"
+        "toolchainFile": "/workspaces/learning-uc/cmake/arm-toolchain.cmake"
     }
 ]

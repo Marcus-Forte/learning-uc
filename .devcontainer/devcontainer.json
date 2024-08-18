@@ -11,5 +11,9 @@
                 "llvm-vs-code-extensions.vscode-clangd"
             ]
         }
-    }
+    },
+
+    "mounts": [
+        "source=
+    ]
 }
