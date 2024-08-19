@@ -1,6 +1,0 @@
-[
-    {
-        "name": "arm-none-eabi",
-        "toolchainFile": "/workspaces/learning-uc/cmake/arm-toolchain.cmake"
-    }
-]
