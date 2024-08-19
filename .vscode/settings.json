@@ -1,0 +1,18 @@
+{
+    "cmake.debugConfig": {
+        "type": "cppdbg",
+        "request": "launch",
+        "miDebuggerServerAddress": "host.docker.internal:4242",
+        "miDebuggerPath": "/usr/bin/gdb-multiarch",
+        "setupCommands": [
+            {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            }
+        ],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "stopAtEntry": false,
+    }
+}

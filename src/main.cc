@@ -1,31 +1,31 @@
-#include "stm32f103xb.h"
+// #include "stm32f1xx_hal.h"
+// #include "stm32f1xx_hal_gpio.h"
+// #include "core_cm3.h"
+
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_gpio.h"
-#include <memory>
 
-class MyObj {
-    public:
-    private:
-    int attr_;
-};
- GPIO_InitTypeDef LedGPIO {
-    .Pin = GPIO_PIN_13,
-    .Mode = GPIO_MODE_OUTPUT_PP,
-    .Pull = GPIO_NOPULL,
-    .Speed = GPIO_SPEED_FREQ_LOW
-};
 
-int main (){
-    std::shared_ptr<MyObj> heap_obj;
-    // heap_obj = std::make_shared<MyObj>();
-    HAL_Init();
-    HAL_GPIO_Init(GPIOC, &LedGPIO);
 
-    while(true) {
-        HAL_Delay(1000);
-        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-         HAL_Delay(1000);
-         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-    }
-    
+void HAL_Delay(uint32_t Delay) {
+  for (int i = 0; i < Delay; i++) {
+    __NOP();
+  }
+}
+void main() {
+  HAL_Init();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  GPIO_InitTypeDef GPIO_InitStruct = {
+      .Pin = GPIO_PIN_13,
+      .Mode = GPIO_PULLUP,
+      .Speed = GPIO_SPEED_FREQ_LOW,
+  };
+
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  while (1) {
+    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+    // delay();
+    HAL_Delay(20000);
+  }
 }
