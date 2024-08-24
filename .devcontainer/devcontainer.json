@@ -9,7 +9,14 @@
             "extensions": [
                 "ms-vscode.cpptools-extension-pack",
                 "llvm-vs-code-extensions.vscode-clangd"
-            ]
+            ],
+            "settings": {
+                "C_Cpp.intelliSenseEngine": "disabled"
+            }
         }
-    }
+    },
+    // Change accordingly to your device path! See https://learn.microsoft.com/en-us/windows/wsl/connect-usb for windows.
+    "runArgs": [
+        "--device=/dev/bus/usb/001/002"
+    ]
 }
