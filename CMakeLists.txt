@@ -40,11 +40,12 @@ target_compile_options(stm32f1xx_hal PUBLIC
 )
 
 target_link_options(stm32f1xx_hal PUBLIC -T${CMAKE_SOURCE_DIR}/hal/stm32f103.ld
--Wl,-gc-sections,--print-memory-usage -mcpu=cortex-m3 -mthumb
+-Wl,-gc-sections,--print-memory-usage -mcpu=cortex-m3 -mthumb -lc -specs=nosys.specs -specs=nano.specs
 )
 
 # Main app
 add_executable(${ELF_OUT}
+  src/LED.cc
   src/main.cc)
 target_link_libraries(${ELF_OUT} stm32f1xx_hal)
 target_include_directories(${ELF_OUT} PUBLIC
