@@ -1,9 +1,6 @@
 {
     "name": "STM32 Dev Container",
-    "build":
-    {
-        "dockerfile": "Dockerfile"
-    },
+    "image": "mdnf1992/cpp-dev",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -14,9 +11,9 @@
                 "C_Cpp.intelliSenseEngine": "disabled"
             }
         }
-    },
+    }
     // Change accordingly to your device path! See https://learn.microsoft.com/en-us/windows/wsl/connect-usb for windows.
-    "runArgs": [
-        "--device=/dev/bus/usb/001/005"
-    ]
+    // "runArgs": [
+    //     "--device=/dev/bus/usb/001/005"
+    // ]
 }

@@ -40,7 +40,7 @@ target_compile_options(stm32f1xx_hal PUBLIC
 )
 
 target_link_options(stm32f1xx_hal PUBLIC -T${CMAKE_SOURCE_DIR}/hal/stm32f103.ld
--Wl,-gc-sections,--print-memory-usage -mcpu=cortex-m3 -mthumb -lc -specs=nosys.specs -specs=nano.specs
+-Wl,-gc-sections,--print-memory-usage -mcpu=cortex-m3 -mthumb -specs=nosys.specs -specs=nano.specs
 )
 
 # Main app

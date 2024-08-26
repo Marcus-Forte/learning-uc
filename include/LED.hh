@@ -8,7 +8,7 @@
 class LED : public ILED {
 public:
     LED(GPIO_TypeDef* port, uint16_t pin);
-    ~LED();
+    virtual ~LED();
 
     void on() override;
     void off() override;
