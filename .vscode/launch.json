@@ -1,33 +1,16 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "GDB Remote Debug",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${command:cmake.launchTargetPath}",
-            "miDebuggerServerAddress": "host.docker.internal:4242",
-            "miDebuggerPath": "/usr/bin/gdb-multiarch",
-            "cwd": "${workspaceFolder}",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "stopAtEntry": false,
-            "logging": {
-                "trace": true,
-                "traceResponse": true,
-                "engineLogging": true
-            }
-        }
+    {
+        "cwd": "${workspaceFolder}",
+        "executable": "${command:cmake.launchTargetPath}",
+        "name": "Debug with ST-Util",
+        "request": "launch",
+        "type": "cortex-debug",
+        "gdbPath": "/usr/bin/gdb",
+        "showDevDebugOutput": "none",
+        "servertype": "external",
+        "gdbTarget": "host.docker.internal:4242"
+    }
     ]
-    
 }

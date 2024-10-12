@@ -10,5 +10,5 @@
 
 ### Debug 
 - Connect Stlinkv2
-- On the host, start session with `st-util -m`. This serve as a gdb server.
-- Start cmake debug session.
+- On the host, start session with `st-util`. This serves as a gdb server.
+- Start debugging from vscode. 

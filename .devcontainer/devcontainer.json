@@ -5,10 +5,13 @@
         "vscode": {
             "extensions": [
                 "ms-vscode.cpptools-extension-pack",
-                "llvm-vs-code-extensions.vscode-clangd"
+                "llvm-vs-code-extensions.vscode-clangd",
+                "marus25.cortex-debug"
             ],
             "settings": {
-                "C_Cpp.intelliSenseEngine": "disabled"
+                "C_Cpp.intelliSenseEngine": "disabled",
+                "cmake.additionalKits": ["/opt/toolchains/cmake-kits.json"],
+                "clangd.arguments": ["--header-insertion=never", "--query-driver=/usr/bin/arm-none-eabi-g++"]
             }
         }
     }
