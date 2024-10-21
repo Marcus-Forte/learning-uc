@@ -1,19 +1,19 @@
+
+
 #include "LED.hh"
 #include "UART.hh"
 
-#include "stm32f103xb.h"
 #include "stm32f1xx_hal.h"
-#include "stm32f1xx_hal_gpio.h"
 
 #include <vector>
-// #include <memory>
 
 extern "C" {
-// Define interrupt handlers. HAL needs the SysTick handler for timing.
+// HAL needs the SysTick handler for timing.
 void SysTick_Handler(void) { HAL_IncTick(); }
 }
 
 int main() {
+
   HAL_Init();
   __GPIOC_CLK_ENABLE();
   __GPIOA_CLK_ENABLE();
@@ -26,12 +26,16 @@ int main() {
   std::vector<int> myvec;
 
   uint32_t count = 0;
+  char buff[50];
   while (1) {
-    HAL_Delay(10);
+    HAL_Delay(50);
     count++;
-      led->toggle();
-      myvec.push_back(count);
-      uart->write("vec size: " + std::to_string(myvec.size()));
+    led->toggle();
+    uart->write("Hello! " + std::to_string(count));
+
+    const auto read = uart->read();
+    if (!read.empty()) {
+    }
   }
   delete led;
   delete uart;

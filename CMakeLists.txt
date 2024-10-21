@@ -3,16 +3,18 @@ project(learning-uc C ASM CXX)
 set(ELF_OUT main.elf)
 set(BIN_OUT main.bin)
 
+include(cmake/format.cmake)
+
 # HAL Layer
 set(HAL_SRC
   hal/cmsis_device_f1/Source/Templates/system_stm32f1xx.c
   hal/cmsis_device_f1/Source/Templates/gcc/startup_stm32f103xb.s
-  hal/stm32f1xx_hal_driver/Src/stm32f1xx_hal_adc_ex.c
+  # hal/stm32f1xx_hal_driver/Src/stm32f1xx_hal_adc_ex.c
   hal/stm32f1xx_hal_driver/Src/stm32f1xx_hal.c
   hal/stm32f1xx_hal_driver/Src/stm32f1xx_hal_cortex.c
   hal/stm32f1xx_hal_driver/Src/stm32f1xx_hal_gpio.c
   hal/stm32f1xx_hal_driver/Src/stm32f1xx_hal_uart.c
-  hal/stm32f1xx_hal_driver/Src/stm32f1xx_hal_dma.c
+  # hal/stm32f1xx_hal_driver/Src/stm32f1xx_hal_dma.c
   hal/stm32f1xx_hal_driver/Src/stm32f1xx_hal_rcc.c
 )
 
@@ -24,27 +26,32 @@ target_include_directories(stm32f1xx_hal PUBLIC
   include # HAL_conf.h
 ) 
 
-target_compile_definitions(stm32f1xx_hal PUBLIC STM32F103xB)
+target_compile_definitions(stm32f1xx_hal PUBLIC STM32F103xB) 
 target_compile_options(stm32f1xx_hal PUBLIC
+  # -Wall
   # -ffreestanding
   -nostdlib
   -mthumb
   -mcpu=cortex-m3
   -fdata-sections
-  -Werror 
+  -ffunction-sections
+  -Werror
   -Warray-bounds 
-  -fno-strict-aliasing 
-  -specs=nano.specs 
+  -fno-strict-aliasing
+  -Wno-unused-const-variable
+  -mfloat-abi=soft
+  -mlittle-endian
+  -specs=nano.specs
   -specs=nosys.specs
 )
 
 target_link_options(stm32f1xx_hal PUBLIC -T${CMAKE_SOURCE_DIR}/hal/stm32f103.ld
--Wl,-gc-sections,--print-memory-usage -mthumb -specs=nosys.specs -specs=nano.specs
+-Wl,--gc-sections,--print-memory-usage -mthumb -mcpu=cortex-m3 -specs=nosys.specs -specs=nano.specs
 )
 
 # Main app
 add_executable(${ELF_OUT}
-  src/stubs.c
+  src/syscalls.c
   src/LED.cc
   src/main.cc
   src/UART.cc

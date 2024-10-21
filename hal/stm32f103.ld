@@ -1,10 +1,10 @@
 /*
 *****************************************************************************
 **
-**  File        : STM32F101XB_FLASH.ld
+**  File        : STM32F103X6_FLASH.ld
 **
-**  Abstract    : Linker script for STM32F101xB Device with
-**                64KByte FLASH, 20KByte RAM
+**  Abstract    : Linker script for STM32F103x6 Device with
+**                64KByte FLASH, 10KByte RAM
 **
 **                Set heap size, stack size and stack location according
 **                to application requirements.
@@ -32,7 +32,7 @@
 ENTRY(Reset_Handler)
 
 /* Highest address of the user mode stack */
-_estack = 0x20003FFF;    /* end of RAM */
+_estack = 0x200027FF;    /* end of RAM */
 
 /* Generate a link error if heap and stack don't fit into RAM */
 _Min_Heap_Size = 0x200;      /* required amount of heap  */

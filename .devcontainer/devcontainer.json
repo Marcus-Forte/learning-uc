@@ -15,8 +15,4 @@
             }
         }
     }
-    // Change accordingly to your device path! See https://learn.microsoft.com/en-us/windows/wsl/connect-usb for windows.
-    // "runArgs": [
-    //     "--device=/dev/bus/usb/001/005"
-    // ]
 }
