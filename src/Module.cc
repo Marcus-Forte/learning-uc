@@ -9,6 +9,7 @@ void Module::blink(uint32_t ms) {
   led_->on();
   timing_->delay(ms);
   led_->off();
+  timing_->delay(ms);
 }
 
 void Module::send() { uart_->write("msg!"); }

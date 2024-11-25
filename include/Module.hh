@@ -12,6 +12,7 @@ public:
          const std::shared_ptr<ITiming> &timing);
 
   void blink(uint32_t ms);
+
   void send();
 
 private:

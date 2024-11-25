@@ -7,6 +7,7 @@ include(cmake/format.cmake)
 
 include_directories(include)
 
+# Application library. Platform independent.
 add_library(appLib
 src/Module.cc)
 
@@ -32,8 +33,7 @@ target_include_directories(stm32f1xx_hal PUBLIC
   hal/stm32f1xx_hal_driver/Inc # HAL
 ) 
 
-target_compile_definitions(stm32f1xx_hal PUBLIC STM32F103xB) 
-target_compile_options(stm32f1xx_hal PUBLIC
+set(CompileFlags
   # -Wall
   # -ffreestanding
   -nostdlib
@@ -50,11 +50,13 @@ target_compile_options(stm32f1xx_hal PUBLIC
   -specs=nano.specs
   -specs=nosys.specs
 )
+target_compile_definitions(stm32f1xx_hal PUBLIC STM32F103xB)
+target_compile_options(stm32f1xx_hal PUBLIC ${CompileFlags})
+target_compile_options(appLib PUBLIC ${CompileFlags})
 
 target_link_options(stm32f1xx_hal PUBLIC -T${CMAKE_SOURCE_DIR}/hal/stm32f103.ld
 -Wl,--gc-sections,--print-memory-usage -mthumb -mcpu=cortex-m3 -specs=nosys.specs -specs=nano.specs
 )
-
 
 # Main app
 add_executable(${ELF_OUT}

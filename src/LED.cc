@@ -12,6 +12,6 @@ LED::LED(GPIO_TypeDef *port, uint16_t pin) : port_(port), pin_(pin) {
 
 LED::~LED() { HAL_GPIO_DeInit(port_, pin_); }
 
-void LED::on() { HAL_GPIO_WritePin(port_, pin_, GPIO_PIN_SET); }
-void LED::off() { HAL_GPIO_WritePin(port_, pin_, GPIO_PIN_RESET); }
+void LED::on() { HAL_GPIO_WritePin(port_, pin_, GPIO_PIN_RESET); }
+void LED::off() { HAL_GPIO_WritePin(port_, pin_, GPIO_PIN_SET); }
 void LED::toggle() { HAL_GPIO_TogglePin(port_, pin_); }
