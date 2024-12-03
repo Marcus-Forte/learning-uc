@@ -13,7 +13,7 @@ public:
 
   void blink(uint32_t ms);
 
-  void send();
+  void send(const std::string &msg);
 
 private:
   std::shared_ptr<ILED> led_;

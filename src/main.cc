@@ -23,6 +23,9 @@ int main() {
   auto timing = std::make_shared<Timing>();
 
   Module module(led, uart, timing);
+  std::string msg;
+  uint16_t count = 0;
+
   while (1) {
 
     module.blink(100);
@@ -31,8 +34,12 @@ int main() {
 
     module.blink(300);
 
-    module.send();
+    msg = "Hello " + std::to_string(count) + "!";
 
-    timing->delay(2000);
+    module.send(msg.c_str());
+
+    timing->delay(1000);
+
+    count++;
   }
 }

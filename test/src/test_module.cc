@@ -21,10 +21,10 @@ TEST(test_module, test_module) {
     Module module(mockLED, mockUart, mockTiming);
 
     EXPECT_CALL(*mockLED, on());
-    EXPECT_CALL(*mockTiming, delay(50));
+    EXPECT_CALL(*mockTiming, delay(50)).Times(2);
     EXPECT_CALL(*mockLED, off());
     module.blink(50);
 
     EXPECT_CALL(*mockUart, write("msg!"));
-    module.send();
+    module.send("msg!");
 }

@@ -33,6 +33,7 @@ target_include_directories(stm32f1xx_hal PUBLIC
   hal/stm32f1xx_hal_driver/Inc # HAL
 ) 
 
+# Common flags for MCU architecture agnostic compilers.
 set(CompileFlags
   # -Wall
   # -ffreestanding
@@ -54,6 +55,7 @@ target_compile_definitions(stm32f1xx_hal PUBLIC STM32F103xB)
 target_compile_options(stm32f1xx_hal PUBLIC ${CompileFlags})
 target_compile_options(appLib PUBLIC ${CompileFlags})
 
+# Linker flags must follow compiler flags. Specify linker script with instructions on the memory layout of the target device.
 target_link_options(stm32f1xx_hal PUBLIC -T${CMAKE_SOURCE_DIR}/hal/stm32f103.ld
 -Wl,--gc-sections,--print-memory-usage -mthumb -mcpu=cortex-m3 -specs=nosys.specs -specs=nano.specs
 )
@@ -77,6 +79,7 @@ add_custom_target(${BIN_OUT} ALL
 )
 
 else()
+  # Testing
   include(CTest)
   message(STATUS "## Building tests ##")
   if(BUILD_TESTING)

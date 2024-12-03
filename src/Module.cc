@@ -12,4 +12,4 @@ void Module::blink(uint32_t ms) {
   timing_->delay(ms);
 }
 
-void Module::send() { uart_->write("msg!"); }
+void Module::send(const std::string &msg) { uart_->write(msg); }
